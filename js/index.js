@@ -49,7 +49,7 @@ class Investment {
         let day = this.agreementDate.slice(8, 10);
         const agreementStart = new Date(year, month - 1, day);
         let currentPeriodStart = new Date(agreementStart);
-        let nextPeriodStart = new Date(agreementStart).setMonth(nextPeriodStart.getMonth() + 1);
+        let nextPeriodStart = new Date(agreementStart).setMonth(agreementStart.getMonth() + 1);
 
         let startBalance = this.investedAmount;
         const monthlyInterestRate = this.interestRate / 100 / 12;
@@ -96,7 +96,7 @@ class Investment {
                     The last payment is to be made by end of ${latestPeriodEnd.toDateString()}.
                 </h3>
                 <h3 class="result-text accent">
-                    To see data from the earlier periods, please select a different 'Date of calculation' and click the 'Calculate' button again.
+                    To see data from earlier periods, please select a different 'Date of calculation' and click 'Calculate' button again.
                 </h3>`;
 
         } else {
