@@ -1,10 +1,8 @@
-@import url(//db.onlinewebfonts.com/c/d5c46b134c17b2138dcd1bb0efa67049?family=Roboto);
-
 * {
   list-style: none;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 .body {
