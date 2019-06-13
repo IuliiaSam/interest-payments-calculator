@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Interest Payments Calculator</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="body">
+    <header class="header">
+        <p>Interest Payments Calculator</p>
+    </header>
+    <main class="main">
+        <div class="container">
+
+            <form id="form">
+                <fieldset class="fieldset">
+                    <legend class="legend">Enter loan data</legend>
+                    <div class="fields-container">
+                        <div class="field">
+                            <label for="agreement-date">
+                                Date of agreement:
+                                <input type="date" id="agreement-date" name="agreement-date" class="input" required />
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label for="calculation-date">
+                                Date of calculation:
+                                <input type="date" id="calculation-date" name="calculation-date" class="input"
+                                    required />
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label for="invested-amount">
+                                <span>Invested amount: </span>
+                                <input type="number" id="invested-amount" name="invested-amount" step="100" min="100"
+                                    class="input" required />
+                                <span> USD</span>
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label for="interest-rate">
+                                <span>Interest rate: </span>
+                                <input type="number" id="interest-rate" name="interest-rate" step="0.01" min="0"
+                                    class="input" required />
+                                <span> % per year</span>
+                            </label>
+                        </div>
+                        <div class="field">
+                            <label for="investment-duration">
+                                <span>Investment duration: </span>
+                                <input type="number" id="investment-duration" name="investment-duration" step="1"
+                                    min="1" class="input" required />
+                                <span> years</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button class="button-calculate" type="submit">Calculate!</button>
+                </fieldset>
+            </form>
+            <div id="result-container"></div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>💸</p>
+    </footer>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
