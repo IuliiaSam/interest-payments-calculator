@@ -119,3 +119,9 @@
   background: #4c4d4d;
   color: #e9e9e9;
 }
+
+@media only screen and (max-device-width: 768px) {
+  .input {
+    padding-left: 0;
+  }
+}

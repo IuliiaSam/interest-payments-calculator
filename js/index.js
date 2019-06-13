@@ -10,7 +10,7 @@ const investmentDuration = document.querySelector('#investment-duration');
 
 const resultContainer = document.querySelector('#result-container');
 
-class Loan {
+class Investment {
     constructor() {
         this.agreementDate = null;
         this.calculationDate = null;
@@ -41,16 +41,15 @@ class Loan {
         }
         const monthlyPayment = this.investedAmount * (Math.pow(monthlyInterest, numberOfPeriods) / denominator);
 
-        // Creating array of loan amortization data by month
+        // Creating array of payment data by month
         const arrayOfPayments = [];
 
         let year = this.agreementDate.slice(0, 4);
         let month = this.agreementDate.slice(5, 7);
         let day = this.agreementDate.slice(8, 10);
-        const loanStartDate = new Date(year, month - 1, day);
-        let currentPeriodStart = new Date(loanStartDate);
-        let nextPeriodStart = new Date(loanStartDate);
-        nextPeriodStart.setMonth(nextPeriodStart.getMonth() + 1);
+        const agreementStart = new Date(year, month - 1, day);
+        let currentPeriodStart = new Date(agreementStart);
+        let nextPeriodStart = new Date(agreementStart).setMonth(nextPeriodStart.getMonth() + 1);
 
         let startBalance = this.investedAmount;
         const monthlyInterestRate = this.interestRate / 100 / 12;
@@ -68,10 +67,8 @@ class Loan {
                 principal: principal,
                 endBalance: endBalance,
             });
-            currentPeriodStart = new Date(loanStartDate);
-            currentPeriodStart.setMonth(loanStartDate.getMonth() + i);
-            nextPeriodStart = new Date(loanStartDate);
-            nextPeriodStart.setMonth(loanStartDate.getMonth() + i + 1);
+            currentPeriodStart = new Date(agreementStart).setMonth(agreementStart.getMonth() + i);
+            nextPeriodStart = new Date(agreementStart).setMonth(agreementStart.getMonth() + i + 1);
 
             startBalance = endBalance;
             interestPayment = startBalance * monthlyInterestRate;
@@ -79,7 +76,7 @@ class Loan {
             endBalance = startBalance - principal;
         };
 
-        // Defining which loan payment period corresponds to calculation date selected by the user
+        // Defining which payment period corresponds to calculation date selected by the user
         // It is assumed that the monthly payment is due on the last day of the respective payment period
         let calcYear = this.calculationDate.slice(0, 4);
         let calcMonth = this.calculationDate.slice(5, 7);
@@ -116,12 +113,12 @@ class Loan {
                     The total amount of all future interest payments is ${Math.round((totalRemainingInterest+0.00001)*100)/100} USD
                 </h2>
                 <h3 class="result-text">
-                    Reference: Your fixed monthly loan payment is ${Math.round((monthlyPayment+0.00001)*100)/100} USD
+                    Reference: the fixed monthly payment is ${Math.round((monthlyPayment+0.00001)*100)/100} USD (interest + principal)
                 </h3>`;
         }
     };
 };
 
-let loan = new Loan();
+let investment = new Investment();
 
-dataForm.addEventListener('submit', e => loan.performCalculation(e));
+dataForm.addEventListener('submit', e => investment.performCalculation(e));
